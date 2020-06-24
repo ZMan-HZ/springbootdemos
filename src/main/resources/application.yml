@@ -1,0 +1,12 @@
+#
+#person:
+#  name: zhangsan
+#  age: 16
+#  isBoss: false
+#  maps: {k1: v1,k2: v2}
+#  list:
+#    - ls1
+#    - ls2
+#  dog:
+#    nickname: poppy
+#    petId: 2

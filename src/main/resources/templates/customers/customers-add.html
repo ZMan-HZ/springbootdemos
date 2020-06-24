@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Customers</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/4.3.0/css/bootstrap.css}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link th:href="@{/assets/css/dashboard.css}" rel="stylesheet">
+</head>
+<body>
+<!--引入抽取的topbar
+模版名：：片段名-->
+<!--<div th:insert="~{dashboard::topbar}"></div>-->
+<div th:replace="~{bars/bars::topbar}"></div>
+<!--<div th:replace="dashboard::topbar"></div>-->
+<div class="container-fluid">
+    <div th:replace="bars/bars::#sidebarMenu(activeUri='customers-list.html')"></div>
+    <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <h2>Customers Add</h2>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <button class="btn btn-sm btn-outline-dark" disabled="disabled"
+                        th:text="${customer != null}?'Editing':'Adding'">Adding
+                </button>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-dark " disabled="disabled">Edit</button>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-dark " disabled="disabled">Delete</button>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-dark " disabled="disabled">Export</button>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle date-picker">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div>
+            <!--            Post跟Put method需要
+            1. 配置一个HiddenHttpMethodFilter(已自动配置）
+            2。页面上创建一个post form
+            3。 创建一个input项，name="_method", value就是指定的请求方式
+            -->
+            <form th:action="@{/customers-add.html}" method="post" class="form-text">
+                <input type="hidden" name="_method" value="put" th:if="${customer!=null}">
+                <input type="hidden" name="id" th:if="${customer!=null}" th:value="${customer.id}">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">New Customer's Name</label>
+                    <input type="text" class="form-control" id="newCustomerName" name="name" placeholder="name"
+                           th:value="${customer != null}?${customer.name}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email"
+                           th:value="${customer != null}?${customer.email}" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Gender</label><br/>
+                    <div class="form-check form-check-inline">
+                        <input name="gender" type="radio" class="form-check-inline" value="F"
+                               th:checked="${customer != null}?${customer.gender=='F'}">
+                        <label class="form-check-label">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="gender" type="radio" class="form-check-inline" value="M"
+                               th:checked="${customer != null}?${customer.gender=='M'}">
+                        <label class="form-check-label">Male</label>
+                    </div>
+                </div>
+                <div>
+                    <label>Birthday</label><br/>
+                    <input type="text" name="birthday" class="form-control"
+                           placeholder="birthday { yyyy-MM-dd }"
+                           th:value="${customer != null}?${#dates.format(customer.birthday,'yyyy-MM-dd')}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select a Department</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="department.id">
+                        <option th:value="${department.id}" th:each="department:${departments}"
+                                th:text="${#strings.append(department.id,' - '+department.address)}"
+                                th:selected="${customer != null}?${customer.department.id == department.id}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${customer != null}?'Save':'Submit'">Save
+                </button>
+                <a role="button" class="btn btn-warning" href="#" th:href="@{/customers-list.html}">Cancel</a>
+            </form>
+        </main>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.slim.min.js}"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script th:src="@{/webjars/jquery/3.5.1/jquery.slim.min.js}"><\/script>')</script>
+<script th:src="@{/webjars/bootstrap/4.3.0/js/bootstrap.bundle.js}"></script>
+<script src="./js/feather.js"></script>
+<script src="./js/Chart.js"></script>
+<script src="./js/dashboard.js"></script>
+<script>
+</body>
+</html>
