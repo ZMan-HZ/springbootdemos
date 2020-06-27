@@ -185,7 +185,6 @@
             <artifactId>feather-icons</artifactId>
             <version>4.22.0</version>
         </dependency>
-
     </dependencies>
 
     <build>
