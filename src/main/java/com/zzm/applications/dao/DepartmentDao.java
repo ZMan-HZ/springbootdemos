@@ -17,14 +17,8 @@ import java.util.List;
 @Repository
 public class DepartmentDao {
 
-    private static List<Department> departmentList;
+    private static List<Department> departmentList = new ArrayList<>();
 
-    static {
-        departmentList = new ArrayList<>();
-        departmentList.add(new Department("SanDun", "HZ", 1));
-        departmentList.add(new Department("Xihu", "HZ", 2));
-        departmentList.add(new Department("Xiacheng", "HZ", 3));
-    }
 
     public List<Department> getAllDepartments() {
         return departmentList;

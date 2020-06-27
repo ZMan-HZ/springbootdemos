@@ -35,21 +35,22 @@
 <!--<div th:insert="~{dashboard::topbar}"></div>-->
 <div th:replace="~{bars/bars::topbar}"></div>
 <!--<div th:replace="dashboard::topbar"></div>-->
-
 <div class="container-fluid">
     <div class="row">
         <div th:replace="bars/bars::#sidebarMenu(activeUri='customers-list.html')"></div>
         <!--        <div th:replace="dashboard::sidebar"></div>-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <h2>Customers List</h2>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <a role="button" class="btn btn-sm btn-success" href="" th:href="@{/customers-add.html}">Add</a>
+                <h2>Customers List</h2>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <a role="button" id="edit_button" href="" class="btn btn-sm btn-success edit_clk">Edit</a>
+                        <a role="button" class="btn btn-sm btn-success" href="" th:href="@{/customers-add.html}">Add</a>
                     </div>
                     <div class="btn-group mr-2">
-                        <a role="button" id="delete_button" href="" class="btn btn-sm btn-danger delete_clk">Delete</a>
+                        <a role="button" id="edit_button" href="" class="btn btn-sm btn-warning edit_clk">Edit</a>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <a role="button" id="delete_button" th:method="delete" href="" class="btn btn-sm btn-danger delete_clk">Delete</a>
                     </div>
                     <div class="btn-group mr-2">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
@@ -114,38 +115,44 @@
         crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script th:src="@{/webjars/jquery/3.5.1/jquery.slim.min.js}"><\/script>')</script>
 <script th:src="@{/webjars/bootstrap/4.3.0/js/bootstrap.bundle.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.3.0/js/bootstrap.min.js}"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/feather.js"></script>
 <script src="./js/popper.min.js"></script>
 <script src="./js/Chart.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
+
     // $(".delete_btn").click(function () {
     //     //删除当前员工
     //     $("#deleteCustomerForm").attr("action",$(this).attr("delete_href")).submit();
     //     return false;
     // });
     $(".delete_clk").click(function () {
-        //获取input类型是checkBox并且 name="box"选中的checkBox的元素
+        //获取input类型是checkBox并且 name="checkbox_name"选中的checkBox的元素
         var data = $('input:checkbox[name="checkbox_name"]:checked').map(function () {
             return $(this).val();
         }).get().join(",");
-        $("#delete_button").attr("href", "/customers-delete/" + data).click;
-    });
-    $(".edit_clk").click(function () {
-        //获取input类型是checkBox并且 name="box"选中的checkBox的元素
-        var data = $('input:checkbox[name="checkbox_name"]:checked').map(function () {
-            return $(this).val();
-        }).get().join(",");
-        if (data.length ==0 || data.includes(",")) {
-            alert("Please select one record to edit!");
+        if (data.length == 0) {
+            alert("Warning! Please select record(s) to delete!");
             return false;
-        }else if(data.length ==1){
-        $("#edit_button").attr("href", "/customers-edit/" + data).click;
+        } else if (confirm("Warning!\nDelete operation's not able to revert!")) {
+            $("#delete_button").attr("href", "/customers-delete/" + data).click;
+
         }
     });
-
-
+    $(".edit_clk").click(function () {
+        //获取input类型是checkBox并且 name="checkbox_name"选中的checkBox的元素
+        var data = $('input:checkbox[name="checkbox_name"]:checked').map(function () {
+            return $(this).val();
+        }).get().join(",");
+        if (data.length == 0 || data.includes(",")) {
+            alert("Please select one record to edit!");
+            return false;
+        } else if (data.length == 1) {
+            $("#edit_button").attr("href", "/customers-edit/" + data).click;
+        }
+    });
 </script>
 
 </body>

@@ -39,12 +39,14 @@
     <div th:replace="bars/bars::#sidebarMenu(activeUri='customers-list.html')"></div>
     <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <h2>Customers Add</h2>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <button class="btn btn-sm btn-outline-dark" disabled="disabled"
-                        th:text="${customer != null}?'Editing':'Adding'">Adding
-                </button>
+                <h2>Customers Add</h2>
                 <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-outline-dark" disabled="disabled"
+                                th:text="${customer != null}?'Editing':'Adding'">Adding
+                        </button>
+                    </div>
                     <div class="btn-group mr-2">
                         <button class="btn btn-sm btn-dark " disabled="disabled">Edit</button>
                     </div>
@@ -125,5 +127,6 @@
 <script src="./js/Chart.js"></script>
 <script src="./js/dashboard.js"></script>
 <script>
-</body>
-</html>
+    <
+    /body>
+    < /html>;

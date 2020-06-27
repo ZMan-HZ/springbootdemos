@@ -10,3 +10,11 @@
 #  dog:
 #    nickname: poppy
 #    petId: 2
+#spring:
+#  datasource:
+#    username: dzzmdbid
+#    password: psw@501098
+#    url: jdbc:oracle:thin:@localhost:1521/orclpdb1
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+#    schema:
+#      -classpath: sql/schema-all.sql

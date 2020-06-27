@@ -1,5 +1,7 @@
 package com.zzm.applications.beans;
 
+import java.io.Serializable;
+
 /**
  * <b>Description</b>  Department
  *
@@ -7,78 +9,62 @@ package com.zzm.applications.beans;
  * @Since 2020-06-21 周日 18:41
  * @Info Department
  */
-public class Department {
+public class Department  implements Serializable {
 
+    private Integer zipCode;
+    private String district;
     private String address;
     private String city;
-    private Integer id;
 
     public Department() {
     }
-    public Department(String address,String city,Integer id) {
-        this.address= address;
+
+    public Department(String district, String address, String city, Integer zipCode) {
+        this.zipCode = zipCode;
+        this.district = district;
+        this.address = address;
         this.city = city;
-        this.id = id;
+    }
+
+    public Integer getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(Integer zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public String getAddress() {
-        return this.address;
-    }
-
-    public String getCity() {
-        return this.city;
-    }
-
-    public Integer getId() {
-        return this.id;
+        return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
+    public String getCity() {
+        return city;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
     @Override
-    public boolean equals(final Object o) {
-        if (o == this) return true;
-        if (!(o instanceof Department)) return false;
-        final Department other = (Department) o;
-        if (!other.canEqual((Object) this)) return false;
-        final Object this$address = this.getAddress();
-        final Object other$address = other.getAddress();
-        if (this$address == null ? other$address != null : !this$address.equals(other$address)) return false;
-        final Object this$city = this.getCity();
-        final Object other$city = other.getCity();
-        if (this$city == null ? other$city != null : !this$city.equals(other$city)) return false;
-        final Object this$id = this.getId();
-        final Object other$id = other.getId();
-        if (this$id == null ? other$id != null : !this$id.equals(other$id)) return false;
-        return true;
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof Department;
-    }
-    @Override
-    public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        final Object $address = this.getAddress();
-        result = result * PRIME + ($address == null ? 43 : $address.hashCode());
-        final Object $city = this.getCity();
-        result = result * PRIME + ($city == null ? 43 : $city.hashCode());
-        final Object $id = this.getId();
-        result = result * PRIME + ($id == null ? 43 : $id.hashCode());
-        return result;
-    }
-@Override
     public String toString() {
-        return "Department(address=" + this.getAddress() + ", city=" + this.getCity() + ", id=" + this.getId() + ")";
+        return "Department{" +
+                "zipCode=" + zipCode +
+                ", district='" + district + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离
+注意：使用mapper代理方法开发，namespace有特殊重要的作用，namespace等于mapper接口地址
+-->
+<mapper namespace="com.zzm.applications.service.mapper.CustomersMapper">
+    <!--resultMap 中的定义顺序不能错乱，association不能先与result，如果有result要定义-->
+    <!--    建议选择 autoMapping，不然手动map的带下划线的map不到，原因可能是，转换是大小写跟下划线位置。-->
+    <resultMap id="customerMap" type="Customers" autoMapping="true">
+        <!--        <result column="id" property="id"/>-->
+        <!--        <result column="name" property="name"/>-->
+        <!--        <result column="gender" property="gender"/>-->
+        <!--        <result column="birthday" property="birthday"/>-->
+        <!--        <result column="email" property="email"/>-->
+        <!--        <result column="contactNumber" property="contactNumber"/>-->
+        <!--        <result column="startDate" property="startDate"/>-->
+        <!--        <result column="endDate" property="endDate"/>-->
+        <!--        <result column="LastUpdatedDate" property="LastUpdatedDate"/>-->
+        <!--        <result column="LastUpdatedBy" property="LastUpdatedBy"/>-->
+        <association property="department" javaType="Department" autoMapping="true">
+            <!--            <result column="zipCode" property="zipCode"/>-->
+            <!--            <result column="city" property="city"/>-->
+            <!--            <result column="district" property="district"/>-->
+        </association>
+    </resultMap>
+
+    <!--        <select id="getCustomerById" resultType="Customers">-->
+    <!--            SELECT * FROM CUSTOMERS_LIST WHERE ID = #{id}-->
+    <!--        </select>-->
+
+    <sql id="OR">OR</sql>
+    <sql id="AND"> AND </sql>
+    <sql id="IN">IN</sql>
+
+    <select id="getCustomerById" resultMap="customerMap">
+        SELECT * FROM CUSTOMERS_LIST WHERE ID = #{id}
+    </select>
+    <select id="getAllCustomers" resultMap="customerMap">
+        SELECT * FROM CUSTOMERS_LIST
+    </select>
+    <insert id="saveCustomer" parameterType="Customers">
+        INSERT INTO CUSTOMERS_LIST(NAME, GENDER, BIRTHDAY, EMAIL, CONTACT_NUMBER, CITY, DISTRICT, ZIP_CODE, START_DATE, END_DATE, LAST_UPDATED_BY)
+        VALUES (name gender,bithday,email,contactNumber,city,district,zipCode,startDate,endDate,lastUpdatedDate)
+    </insert>
+
+    <delete id="deleteCustomerByIdList" parameterType="List">
+
+    </delete>
+
+    <delete id="deleteCustomer" parameterType="Integer">
+
+    </delete>
+
+    <!--    <select id="getAllCustomersCallSP" parameterType="" statementType="CALLABLE">-->
+
+    <!--    </select>-->
+    <!-- statementType 声明指向的是什么类型，其中CALLABLE是执行存储过程和函数的-->
+    <!--    <select id="queryEmp" parameterType="map" statementType="CALLABLE">-->
+    <!--    {-->
+    <!--        call pag_add(-->
+    <!--            #{p1,mode=IN,jdbcType=NUMERIC},-->
+    <!--            #{p2,mode=IN,jdbcType=NUMERIC},-->
+    <!--            #{p3,mode=OUT,jdbcType=NUMERIC}-->
+    <!--        )-->
+    <!--    }-->
+    <!--    </select>-->
+    <!-- 定义存储过程 -->
+    <!--    <select id="callProcedure" parameterType="map" statementType="CALLABLE" >-->
+    <!--      {-->
+    <!--         call prg_add(-->
+    <!--               #{p1,mode=IN,jdbcType=NUMERIC},-->
+    <!--               #{p2,mode=IN,jdbcType=NUMERIC},-->
+    <!--               #{p3,mode=OUT,jdbcType=NUMERIC}-->
+    <!--         )-->
+    <!--      }-->
+    <!--  </select>-->
+    <!--<insert id="insertCustomer">-->
+    <!--    {-->
+    <!--         call prg_add(-->
+    <!--               #{p1,mode=IN,jdbcType=NUMERIC},-->
+    <!--               #{p2,mode=IN,jdbcType=NUMERIC},-->
+    <!--               #{p3,mode=OUT,jdbcType=NUMERIC}-->
+    <!--         )-->
+    <!--      }-->
+    <!--</insert>-->
+
+    <!--<update id="updateCustomerByID">-->
+    <!--    {-->
+    <!--         call prg_add(-->
+    <!--               #{p1,mode=IN,jdbcType=NUMERIC},-->
+    <!--               #{p2,mode=IN,jdbcType=NUMERIC},-->
+    <!--               #{p3,mode=OUT,jdbcType=NUMERIC}-->
+    <!--         )-->
+    <!--      }-->
+    <!--</update>-->
+
+
+</mapper>

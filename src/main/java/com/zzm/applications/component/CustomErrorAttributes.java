@@ -23,9 +23,9 @@ public class CustomErrorAttributes extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {
         Map<String, Object> map = super.getErrorAttributes(webRequest, options);
         map.put("customeKey", "customeErrorMessage");
-        //拿到在com.zzm.applications.controller.UserNotExistExceptionHandler.handleExceptionWithMessage中添加的信息,可在页面上取出来
-        Map<String, Object> mapException = (Map<String, Object>) webRequest.getAttribute("exception",0);
-        map.put("exception",mapException);
+        //拿到在com.zzm.applications.controller.UserNonExistExceptionHandler.handleExceptionWithMessage中添加的信息,可在页面上取出来
+        Map<String, Object> mapException = (Map<String, Object>) webRequest.getAttribute("NonExistException",0);
+        map.put("NonExistException",mapException);
         return map;
     }
 }

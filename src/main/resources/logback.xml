@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds" packagingData="true">
+    <property name="LOG_PATH" value="logs"/>
+    <property name="LOG_ARCHIVE" value="${LOG_PATH}/archive"/>
+    <property name="LOG_PATTERN" value="%highlight([%level]) -> %highlight(%5d{yyyy-MM-dd HH:mm:ss.SSS}) %green(%c) - %red([%thread]): %cyan(%msg) %n"/>
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                ${LOG_PATTERN}
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="FileAppender" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/SpringBoot.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                [%level] -> %5d{yyyy-MM-dd HH:mm:ss.SSS} %c-[%t]: %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+    <appender name="RollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_ARCHIVE}/SpringBootRollingLog.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_ARCHIVE}/archived/SpringBootRolling- %d{dd-MM-yyyy}.zip</fileNamePattern>
+            <maxHistory>3</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>[%level] -> %5d{yyyy-MM-dd HH:mm:ss.SSS} %c-[%t]: %msg%n</Pattern>
+        </encoder>
+    </appender>
+    <!-- Logging custom package -->
+    <logger name="com.zzm.applications.mapper" level="debug" additivity="false">
+        <appender-ref ref="ConsoleAppender"></appender-ref>
+        <appender-ref ref="FileAppender"></appender-ref>
+    </logger>
+
+<!--    &lt;!&ndash; Logging spring boot package &ndash;&gt;-->
+<!--    <logger name="org.springframework.boot" level="info" additivity="false">-->
+<!--        <appender-ref ref="ConsoleAppender"></appender-ref>-->
+<!--        <appender-ref ref="FileAppender"></appender-ref>-->
+<!--    </logger>-->
+    <root level="info">
+        <appender-ref ref="ConsoleAppender"></appender-ref>
+        <appender-ref ref="FileAppender"></appender-ref>
+    </root>
+</configuration>

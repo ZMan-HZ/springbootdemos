@@ -101,7 +101,7 @@ public class Person {
         if (o == this) return true;
         if (!(o instanceof Person)) return false;
         final Person other = (Person) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!other.canEqual(this)) return false;
         final Object this$name = this.getName();
         final Object other$name = other.getName();
         if (this$name == null ? other$name != null : !this$name.equals(other$name)) return false;
@@ -122,8 +122,7 @@ public class Person {
         if (this$maps == null ? other$maps != null : !this$maps.equals(other$maps)) return false;
         final Object this$dog = this.getDog();
         final Object other$dog = other.getDog();
-        if (this$dog == null ? other$dog != null : !this$dog.equals(other$dog)) return false;
-        return true;
+        return this$dog == null ? other$dog == null : this$dog.equals(other$dog);
     }
 
     protected boolean canEqual(final Object other) {
