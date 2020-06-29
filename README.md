@@ -4,10 +4,10 @@
 ## 1. Hello Spring Boot
 ## 2. Spring Boot Autoconfigutation
 ## 3. Spring Boot intergrate with Spring Security
-## 4. Spring Boot intergation with SpringMVC
+## 4. Spring Boot intergrate with SpringMVC
 ## 5. Spring Boot intergrate with Mybatis
-## 6. Spring Boot intergration with JPA
-## 7. Spring Boot intergartion with Redis
+## 6. Spring Boot intergrate with JPA
+## 7. Spring Boot intergrate with Redis
 ## 8. Spring Boot intergrate with JMS(ActiveMQ)
 ## 9. Spring Boot intergrate with React.js
 # TO be contained:
