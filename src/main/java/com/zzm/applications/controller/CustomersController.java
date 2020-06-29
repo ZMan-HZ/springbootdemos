@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.Map;
  * @Info CustomersController
  */
 @Controller
+@CrossOrigin
 public class CustomersController {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomersController.class);
@@ -41,6 +43,13 @@ public class CustomersController {
         Collection<Customers> all = customersServive.getAll();
         model.addAttribute("customers", all);
         return "customers/customers-list";
+    }
+    @ResponseBody
+    @GetMapping("/customers/list")
+    public Collection<Customers> reactListCustomer() {
+        Collection<Customers> all = customersServive.getAll();
+        logger.info("@@@@@@@@@@@@@@@@@@@@@react call..");
+        return all;
     }
 
     @GetMapping("/customers-add.html")
