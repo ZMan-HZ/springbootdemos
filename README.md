@@ -11,5 +11,8 @@
 ## 8. Spring Boot intergrate with JMS(ActiveMQ)
 ## 9. Spring Boot intergrate with React.js
 # TO be contained:
-## 10. Spring Boot intergrate with Elasticsearch
-## 11. Spring Boot intergrate with email
+## 10. email
+## 10. Quartz
+## 10. Elasticsearch
+## 11. ...
+## >>>>>>>>
