@@ -9,7 +9,7 @@
 ## 6. Spring Boot intergrate with JPA
 ## 7. Spring Boot intergrate with Redis
 ## 8. Spring Boot intergrate with JMS(ActiveMQ)
-## 9. Spring Boot intergrate with React.js
+## 9. Spring Boot intergrate with React.js UI (Because Copyright constraint, this is a private repository!)
 # TO be contained:
 ## 10. email
 ## 10. Quartz
