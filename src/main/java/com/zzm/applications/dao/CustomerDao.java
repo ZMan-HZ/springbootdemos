@@ -1,12 +1,15 @@
+/*
 package com.zzm.applications.dao;
 
+*/
 /**
  * <b>Description</b>  CustomerDao
  *
  * @Author Zhenzhen
  * @Since 2020-06-21 周日 15:46
  * @Info CustomerDao
- */
+ *//*
+
 
 import com.zzm.applications.beans.Customers;
 import com.zzm.applications.beans.CityDistricts;
@@ -59,7 +62,7 @@ public class CustomerDao {
     }
 
     public void saveCustomer(Customers customers) {
-        CityDistricts department = customers.getDepartment();
+        CityDistricts department = customers.getCityDistrict();
         if (customers.getId() == null) {
             customers.setId(String.valueOf(customersMap.size() + 1));
         }
@@ -78,7 +81,7 @@ public class CustomerDao {
 //            default:
 //                break;
 //        }
-        customers.setDepartment(department);
+        customers.setCityDistrict(department);
         customersMap.put(Integer.parseInt(customers.getId()), customers);
     }
 
@@ -100,3 +103,4 @@ public class CustomerDao {
 
 
 }
+*/

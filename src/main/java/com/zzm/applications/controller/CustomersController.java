@@ -3,7 +3,7 @@ package com.zzm.applications.controller;
 import com.zzm.applications.beans.CityDistricts;
 import com.zzm.applications.beans.Customers;
 import com.zzm.applications.service.CustomersServive;
-import com.zzm.applications.service.DepartmentService;
+import com.zzm.applications.service.CityDistrictsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.List;
  * @Info CustomersController
  */
 @Controller
-@CrossOrigin
+//@CrossOrigin
 public class CustomersController {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomersController.class);
@@ -34,7 +34,7 @@ public class CustomersController {
     private CustomersServive customersServive;
 
     @Autowired
-    private DepartmentService departmentService;
+    private CityDistrictsService cityDistrictsService;
 
     @GetMapping("/customers-list.html")
     public String listCustomer(ModelMap model) {
@@ -43,17 +43,19 @@ public class CustomersController {
 
         return "customers/customers-list";
     }
+
     @ResponseBody
     @GetMapping("/customers/list")
-    public Collection<Customers> reactListCustomer() {
-        Collection<Customers> all = customersServive.getAll();
+    public List<Customers> reactListCustomer() {
+        List<Customers> all = customersServive.getAll();
+        logger.info("@@@@@@@@@@@@@@@@@@@@@react call.." + all.get(1));
         logger.info("@@@@@@@@@@@@@@@@@@@@@react call..");
         return all;
     }
 
     @GetMapping("/customers-add.html")
     public String addCustomerPage(ModelMap model) {
-        List<CityDistricts> allDepartments = departmentService.getAllDepartments();
+        List<CityDistricts> allDepartments = cityDistrictsService.getAllDisttricts();
         model.addAttribute("departments", allDepartments);
         return "customers/customers-add";
     }
@@ -72,7 +74,7 @@ public class CustomersController {
     public String toEditPage(@PathVariable("id") Integer id, ModelMap model) {
         Customers customer = customersServive.getCustomerById(id);
         model.addAttribute("customer", customer);
-        List<CityDistricts> allDepartments = departmentService.getAllDepartments();
+        List<CityDistricts> allDepartments = cityDistrictsService.getAllDisttricts();
         model.addAttribute("departments", allDepartments);
         return "customers/customers-add";
     }

@@ -14,9 +14,9 @@ import java.util.List;
 
 public interface CityDistrictsMapper {
 
-    public List<CityDistricts> getAllDepartments();
+    public List<CityDistricts> getAllDisttricts();
 
-    public CityDistricts getDepartmentByZipCode(Integer zipCode);
+    public CityDistricts getDisttrictByZipCode(Integer zipCode);
 
     public void deleteDepartment(Integer zip_code);
 

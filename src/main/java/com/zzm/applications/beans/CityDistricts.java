@@ -72,4 +72,6 @@ public class CityDistricts implements Serializable {
     public String toString() {
         return "CityDistricts(id=" + this.getId() + ", zipCode=" + this.getZipCode() + ", district=" + this.getDistrict() + ", city=" + this.getCity() + ", province=" + this.getProvince() + ")";
     }
+
+
 }

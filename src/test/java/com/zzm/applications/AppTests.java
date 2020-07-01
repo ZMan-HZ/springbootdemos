@@ -1,7 +1,6 @@
 package com.zzm.applications;
 
 import com.zzm.applications.beans.Customers;
-import com.zzm.applications.beans.Person;
 import com.zzm.applications.service.mapper.CustomersMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -29,9 +28,6 @@ class AppTests {
 
 
     @Autowired
-    Person person;
-
-    @Autowired
     ApplicationContext ctx;
 
     @Autowired
@@ -54,15 +50,15 @@ class AppTests {
 //    }
 
 //
-//    @Test
-//    void contextLoads() throws SQLException {
-////        logger.info(person.toString());
-//        logger.info(String.valueOf(dataSource.getClass()));
-//        Connection connection = null;
-//        connection = dataSource.getConnection();
-//        logger.info(String.valueOf(connection));
-//        connection.close();
-//    }
+    @Test
+    void contextLoads() throws SQLException {
+//        logger.info(person.toString());
+        logger.info(String.valueOf(dataSource.getClass()));
+        Connection connection = null;
+        connection = dataSource.getConnection();
+        logger.info(String.valueOf(connection));
+        connection.close();
+    }
 
     /**
      * Redis 测试

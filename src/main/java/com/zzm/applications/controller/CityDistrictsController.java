@@ -1,7 +1,7 @@
 package com.zzm.applications.controller;
 
 import com.zzm.applications.beans.CityDistricts;
-import com.zzm.applications.service.DepartmentService;
+import com.zzm.applications.service.CityDistrictsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,19 +19,19 @@ import java.util.List;
 
 
 @RestController
-public class DepartmentController {
+public class CityDistrictsController {
 
 @Autowired
-private DepartmentService departmentService;
+private CityDistrictsService cityDistrictsService;
 
     @GetMapping("/departments")
     public List<CityDistricts> getAllDepartments() {
-        return departmentService.getAllDepartments();
+        return cityDistrictsService.getAllDisttricts();
     }
 
     @GetMapping("/department/{zipCode}")
     public CityDistricts getDepartmentByZipCode(@PathVariable("zipCode") Integer zipCode) {
-        return departmentService.getDepartmentByZipCode(zipCode);
+        return cityDistrictsService.getDepartmentByZipCode(zipCode);
     }
 
 

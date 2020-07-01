@@ -31,11 +31,13 @@ public class CustomersServive {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomersServive.class);
 
-    @Autowired(required = false)
+    @Autowired
     private CustomersMapper customersMapper;
 
     @Cacheable(keyGenerator = "keyGenerator")
     public List<Customers> getAll() {
+        List<Customers> allCustomers = customersMapper.getAllCustomers();
+        logger.info(allCustomers.get(1).toString());
         return customersMapper.getAllCustomers();
     }
 

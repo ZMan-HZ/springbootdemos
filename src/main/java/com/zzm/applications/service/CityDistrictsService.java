@@ -17,9 +17,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@CacheConfig(cacheNames = "department")
+@CacheConfig(cacheNames = "cityDistricts")
 @Service
-public class DepartmentService {
+public class CityDistrictsService {
 
     @Autowired(required = false)
     private CityDistrictsMapper cityDistrictsMapper;
@@ -30,13 +30,13 @@ public class DepartmentService {
 //    private CacheManager customizedCachManager;
 
     @Cacheable(keyGenerator = "keyGenerator")
-    public List<CityDistricts> getAllDepartments() {
-        return cityDistrictsMapper.getAllDepartments();
+    public List<CityDistricts> getAllDisttricts() {
+        return cityDistrictsMapper.getAllDisttricts();
     }
 
     @Cacheable(keyGenerator = "keyGenerator")
     public CityDistricts getDepartmentByZipCode(Integer zipCode) {
-        return cityDistrictsMapper.getDepartmentByZipCode(zipCode);
+        return cityDistrictsMapper.getDisttrictByZipCode(zipCode);
     }
 
     /**
