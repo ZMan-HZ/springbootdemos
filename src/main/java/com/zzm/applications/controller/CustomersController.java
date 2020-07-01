@@ -1,7 +1,7 @@
 package com.zzm.applications.controller;
 
+import com.zzm.applications.beans.CityDistricts;
 import com.zzm.applications.beans.Customers;
-import com.zzm.applications.beans.Department;
 import com.zzm.applications.service.CustomersServive;
 import com.zzm.applications.service.DepartmentService;
 import org.slf4j.Logger;
@@ -11,11 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -42,6 +40,7 @@ public class CustomersController {
     public String listCustomer(ModelMap model) {
         Collection<Customers> all = customersServive.getAll();
         model.addAttribute("customers", all);
+
         return "customers/customers-list";
     }
     @ResponseBody
@@ -54,7 +53,7 @@ public class CustomersController {
 
     @GetMapping("/customers-add.html")
     public String addCustomerPage(ModelMap model) {
-        List<Department> allDepartments = departmentService.getAllDepartments();
+        List<CityDistricts> allDepartments = departmentService.getAllDepartments();
         model.addAttribute("departments", allDepartments);
         return "customers/customers-add";
     }
@@ -73,7 +72,7 @@ public class CustomersController {
     public String toEditPage(@PathVariable("id") Integer id, ModelMap model) {
         Customers customer = customersServive.getCustomerById(id);
         model.addAttribute("customer", customer);
-        List<Department> allDepartments = departmentService.getAllDepartments();
+        List<CityDistricts> allDepartments = departmentService.getAllDepartments();
         model.addAttribute("departments", allDepartments);
         return "customers/customers-add";
     }

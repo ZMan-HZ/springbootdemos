@@ -8,8 +8,8 @@ package com.zzm.applications.service;
  * @Info DepartmentService
  */
 
-import com.zzm.applications.beans.Department;
-import com.zzm.applications.service.mapper.DepartmentMapper;
+import com.zzm.applications.beans.CityDistricts;
+import com.zzm.applications.service.mapper.CityDistrictsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -22,7 +22,7 @@ import java.util.List;
 public class DepartmentService {
 
     @Autowired(required = false)
-    private DepartmentMapper departmentMapper;
+    private CityDistrictsMapper cityDistrictsMapper;
 
 //    //此注解只是在不使用cache注解时用
 //    @Qualifier("customizedCachManager")//当有多个时，明确指定使用哪一个
@@ -30,13 +30,13 @@ public class DepartmentService {
 //    private CacheManager customizedCachManager;
 
     @Cacheable(keyGenerator = "keyGenerator")
-    public List<Department> getAllDepartments() {
-        return departmentMapper.getAllDepartments();
+    public List<CityDistricts> getAllDepartments() {
+        return cityDistrictsMapper.getAllDepartments();
     }
 
     @Cacheable(keyGenerator = "keyGenerator")
-    public Department getDepartmentByZipCode(Integer zipCode) {
-        return departmentMapper.getDepartmentByZipCode(zipCode);
+    public CityDistricts getDepartmentByZipCode(Integer zipCode) {
+        return cityDistrictsMapper.getDepartmentByZipCode(zipCode);
     }
 
     /**
@@ -44,8 +44,8 @@ public class DepartmentService {
      */
     /*
     使用缓存管理器获取缓存，进行操作
-    public Department getDepartmentByZipCode1(Integer zipCode) {
-        Department departmentByZipCode = departmentMapper.getDepartmentByZipCode(zipCode);
+    public CityDistricts getDepartmentByZipCode1(Integer zipCode) {
+        CityDistricts departmentByZipCode = cityDistrictsMapper.getDepartmentByZipCode(zipCode);
         //获取缓存
         Cache cache = customizedCachManager.getCache("department");
         cache.put("depart:1", departmentByZipCode);

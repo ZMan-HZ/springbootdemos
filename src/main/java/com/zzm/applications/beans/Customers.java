@@ -14,30 +14,31 @@ import java.util.Date;
  */
 public class Customers  implements Serializable {
 
-    private Integer id;
+    private String id;
     private String name;
     private String gender;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birthday;
     private String email;
-    private String contactNumber;
+    private String phoneNumber;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startDate;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
+    private String address;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastUpdatedDate;
     private String lastUpdatedBy;
-    private Department department;
+    private CityDistricts cityDistricts;
 
     public Customers() {
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,12 +74,12 @@ public class Customers  implements Serializable {
         this.email = email;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setPhoneNumber(String contactNumber) {
+        this.phoneNumber = contactNumber;
     }
 
     public Date getStartDate() {
@@ -97,6 +98,14 @@ public class Customers  implements Serializable {
         this.endDate = endDate;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Date getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -113,28 +122,29 @@ public class Customers  implements Serializable {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
-    public Department getDepartment() {
-        return department;
+    public CityDistricts getDepartment() {
+        return cityDistricts;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartment(CityDistricts department) {
+        this.cityDistricts = department;
     }
 
     @Override
     public String toString() {
         return "Customers{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", birthday=" + birthday +
                 ", email='" + email + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
+                ", address='" + address + '\'' +
                 ", lastUpdatedDate=" + lastUpdatedDate +
                 ", lastUpdatedBy='" + lastUpdatedBy + '\'' +
-                ", department=" + department +
+                ", department=" + cityDistricts +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.zzm.applications.dao;
 
-import com.zzm.applications.beans.Department;
+import com.zzm.applications.beans.CityDistricts;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import java.util.List;
 @Repository
 public class DepartmentDao {
 
-    private static List<Department> departmentList = new ArrayList<>();
+    private static List<CityDistricts> departmentList = new ArrayList<>();
 
 
-    public List<Department> getAllDepartments() {
+    public List<CityDistricts> getAllDepartments() {
         return departmentList;
     }
 

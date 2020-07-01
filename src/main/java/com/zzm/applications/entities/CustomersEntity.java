@@ -1,7 +1,6 @@
 package com.zzm.applications.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.zzm.applications.beans.Department;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -48,7 +47,7 @@ public class CustomersEntity {
     @Column
     private String lastUpdatedBy;
 //    @Column(name = "{ZIP_CODE,DISTRICT}")
-//    private Department department;
+//    private CityDistricts department;
 
 
     public Integer getId() {
@@ -131,11 +130,11 @@ public class CustomersEntity {
         this.lastUpdatedBy = lastUpdatedBy;
     }
 
-//    public Department getDepartment() {
+//    public CityDistricts getDepartment() {
 //        return department;
 //    }
 //
-//    public void setDepartment(Department department) {
+//    public void setDepartment(CityDistricts department) {
 //        this.department = department;
 //    }
 }

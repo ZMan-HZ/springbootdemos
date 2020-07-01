@@ -7,21 +7,47 @@
 --     NOCYCLE
 --     NOCACHE
 -- ;
--- CREATE OR REPLACE TRIGGER CUSTOMERS_AUTOID_TRIGGER
---     BEFORE
---         INSERT
---     ON CUSTOMERS_LIST
---     FOR EACH ROW
--- DECLARE
---     nextID number;
--- begin
---     if :new.ID is null then
---         SELECT to_char(current_date, 'yyyymmddhh24miss') || CUSTOMERS_AUTO_ID.NEXTVAL
---         into nextID
---         FROM DUAL;
---         :new.ID := nextID;
---     end if;
--- end CUSTOMERS_AUTOID_TRIGGER;
+--
+--  CREATE OR REPLACE TRIGGER CUSTOMERS_AUTOID_TRIGGER
+--      BEFORE
+--          INSERT
+--      ON CUSTOMERS_LIST
+--      FOR EACH ROW
+--  DECLARE
+--      nextID number;
+--  begin
+--      if :new.ID is null then
+--          SELECT to_char(current_date, 'yyyymmddhh24miss') || substr(concat('000',CUSTOMERS_AUTO_ID.NEXTVAL),-4,4)
+--          into nextID
+--          FROM DUAL;
+--          :new.ID := nextID;
+--      end if;
+--  end CUSTOMERS_AUTOID_TRIGGER;
+
+
+-- CREATE SEQUENCE CITY_DISTRICT_AUTO_ID
+--      INCREMENT BY 1
+--      START WITH 1
+--      MINVALUE 1
+--      MAXVALUE 999999999
+--      NOCYCLE
+--      NOCACHE
+--  ;
+--  CREATE OR REPLACE TRIGGER CITY_DISTRICT_AUTOID_TRIGGER
+--      BEFORE
+--          INSERT
+--      ON CITY_DISTRCIT_MASTER
+--      FOR EACH ROW
+--  DECLARE
+--      nextID number;
+--  begin
+--      if :new.ID is null then
+--          SELECT CITY_DISTRICT_AUTO_ID.NEXTVAL
+--          into nextID
+--          FROM DUAL;
+--          :new.ID := nextID;
+--      end if;
+--  end CITY_DISTRICT_AUTOID_TRIGGER;
 
 --DELETE  FROM CUSTOMERS_LIST;
 

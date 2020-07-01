@@ -32,7 +32,7 @@ public class JmsConsumerListener {
     private AtomicInteger counter = new AtomicInteger(0);
     private AtomicInteger counter2 = new AtomicInteger(0);
 
-    @JmsListener(destination = "send") //监听消息, 消息收不全，只能打印处一半，但是MQ里显示全被消费
+    //@JmsListener(destination = "send") //监听消息, 消息收不全，只能打印处一半，但是MQ里显示全被消费
     public void listen(ActiveMQMessage message) throws JMSException {
         ActiveMQTextMessage textMessage;
         if (message == null) {
@@ -61,7 +61,7 @@ public class JmsConsumerListener {
         logger.info("counter: " + counter.intValue());
     }
 
-    @JmsListener(destination = "receive") //监听消息, 消息收不全，只能打印处一半，但是MQ里显示全被消费
+    //@JmsListener(destination = "receive") //监听消息, 消息收不全，只能打印处一半，但是MQ里显示全被消费
     public void receive(ActiveMQMessage message) throws JMSException {
         ActiveMQTextMessage textMessage;
         if (message == null) {

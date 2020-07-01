@@ -1,6 +1,6 @@
 package com.zzm.applications.controller;
 
-import com.zzm.applications.beans.Department;
+import com.zzm.applications.beans.CityDistricts;
 import com.zzm.applications.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,12 +25,12 @@ public class DepartmentController {
 private DepartmentService departmentService;
 
     @GetMapping("/departments")
-    public List<Department> getAllDepartments() {
+    public List<CityDistricts> getAllDepartments() {
         return departmentService.getAllDepartments();
     }
 
     @GetMapping("/department/{zipCode}")
-    public Department getDepartmentByZipCode(@PathVariable("zipCode") Integer zipCode) {
+    public CityDistricts getDepartmentByZipCode(@PathVariable("zipCode") Integer zipCode) {
         return departmentService.getDepartmentByZipCode(zipCode);
     }
 

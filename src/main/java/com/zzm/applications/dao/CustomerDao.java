@@ -9,10 +9,9 @@ package com.zzm.applications.dao;
  */
 
 import com.zzm.applications.beans.Customers;
-import com.zzm.applications.beans.Department;
+import com.zzm.applications.beans.CityDistricts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -60,38 +59,38 @@ public class CustomerDao {
     }
 
     public void saveCustomer(Customers customers) {
-        Department department = customers.getDepartment();
+        CityDistricts department = customers.getDepartment();
         if (customers.getId() == null) {
-            customers.setId(customersMap.size() + 1);
+            customers.setId(String.valueOf(customersMap.size() + 1));
         }
 
 //        customers.setId(11);
-        switch (department.getZipCode()) {
-            case 1:
-                department.setAddress("SanDun");
-                break;
-            case 2:
-                department.setAddress("Xihu");
-                break;
-            case 3:
-                department.setAddress("XiaCheng");
-                break;
-            default:
-                break;
-        }
+//        switch (department.getZipCode()) {
+//            case 1:
+//                department.setAddress("SanDun");
+//                break;
+//            case 2:
+//                department.setAddress("Xihu");
+//                break;
+//            case 3:
+//                department.setAddress("XiaCheng");
+//                break;
+//            default:
+//                break;
+//        }
         customers.setDepartment(department);
-        customersMap.put(customers.getId(), customers);
+        customersMap.put(Integer.parseInt(customers.getId()), customers);
     }
 
     public Customers getCustomer(Integer id) {
 
-        for (Map.Entry<Integer, Customers> entry : customersMap.entrySet()) {
-            Integer key = entry.getKey();
-            Integer idx = entry.getValue().getId();
-            if (id.equals(idx)) {
-                return entry.getValue();
-            }
-        }
+//        for (Map.Entry<Integer, Customers> entry : customersMap.entrySet()) {
+//            Integer key = entry.getKey();
+//            String idx = entry.getValue().getId();
+//            if (id.equals(idx)) {
+//                return entry.getValue();
+//            }
+//        }
         return null;
     }
 

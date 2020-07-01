@@ -20,7 +20,7 @@
         <!--        <result column="endDate" property="endDate"/>-->
         <!--        <result column="LastUpdatedDate" property="LastUpdatedDate"/>-->
         <!--        <result column="LastUpdatedBy" property="LastUpdatedBy"/>-->
-        <association property="department" javaType="Department" autoMapping="true">
+        <association property="cityDistricts" javaType="CityDistricts" autoMapping="true">
             <!--            <result column="zipCode" property="zipCode"/>-->
             <!--            <result column="city" property="city"/>-->
             <!--            <result column="district" property="district"/>-->
@@ -42,7 +42,7 @@
         SELECT * FROM CUSTOMERS_LIST
     </select>
     <insert id="saveCustomer" parameterType="Customers">
-        INSERT INTO CUSTOMERS_LIST(NAME, GENDER, BIRTHDAY, EMAIL, CONTACT_NUMBER, CITY, DISTRICT, ZIP_CODE, START_DATE, END_DATE, LAST_UPDATED_BY)
+        INSERT INTO CUSTOMERS_LIST(NAME, GENDER, BIRTHDAY, EMAIL, PHONE_NUMBER, CITY, DISTRICT, ZIP_CODE,START_DATE, END_DATE, LAST_UPDATED_BY)
         VALUES (name gender,bithday,email,contactNumber,city,district,zipCode,startDate,endDate,lastUpdatedDate)
     </insert>
 
