@@ -25,7 +25,6 @@
       <excludeFolder url="file://$MODULE_DIR$/api/src/shards-dashboard" />
       <excludeFolder url="file://$MODULE_DIR$/logs" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/api/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludePattern pattern="mv*" />
       <excludePattern pattern="*.md" />
     </content>

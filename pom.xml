@@ -192,7 +192,6 @@
             <resource>
                 <directory>src/main/resources/</directory>
                 <excludes>
-                    <exclude>ui/**</exclude>
                     <exclude>**/*.yml</exclude>
                     <exclude>**/bak*.*</exclude>
                     <exclude>**/back*.*</exclude>
@@ -211,7 +210,7 @@
                     <nodeVersion>v10.16.0</nodeVersion>
                     <npmVersion>6.14.5</npmVersion>
                     <installDirectory>target</installDirectory>
-                    <workingDirectory>src/main/resources/ui</workingDirectory>
+                    <workingDirectory>react-ui</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
