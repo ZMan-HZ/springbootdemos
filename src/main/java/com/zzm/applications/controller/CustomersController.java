@@ -23,8 +23,8 @@ import java.util.List;
  * @Since 2020-06-21 周日 15:34
  * @Info CustomersController
  */
-@Controller
-//@CrossOrigin
+@RestController
+@CrossOrigin
 public class CustomersController {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomersController.class);
@@ -36,20 +36,17 @@ public class CustomersController {
     @Autowired
     private CityDistrictsService cityDistrictsService;
 
-    @GetMapping("/customers-list.html")
-    public String listCustomer(ModelMap model) {
-        Collection<Customers> all = customersServive.getAll();
-        model.addAttribute("customers", all);
+//    @GetMapping("/customers-list.html")
+//    public String listCustomer(ModelMap model) {
+//        Collection<Customers> all = customersServive.getAll();
+//        model.addAttribute("customers", all);
+//
+//        return "customers/customers-list";
+//    }
 
-        return "customers/customers-list";
-    }
-
-    @ResponseBody
     @GetMapping("/customers/list")
     public List<Customers> reactListCustomer() {
         List<Customers> all = customersServive.getAll();
-        logger.info("@@@@@@@@@@@@@@@@@@@@@react call.." + all.get(1));
-        logger.info("@@@@@@@@@@@@@@@@@@@@@react call..");
         return all;
     }
 

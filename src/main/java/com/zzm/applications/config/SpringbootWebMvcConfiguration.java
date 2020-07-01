@@ -30,10 +30,10 @@ public class SpringbootWebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+        /*registry.addViewController("/").setViewName("index.html");
         registry.addViewController("/login.html").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
-        registry.addViewController("/dashboard.html").setViewName("dashboard");
+        registry.addViewController("/dashboard.html").setViewName("dashboard");*/
     }
 
     @Override
