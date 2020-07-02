@@ -9,6 +9,7 @@ import java.util.Date;
  * @Since 2020-07-01 周三 21:47
  * @Info LoginUserInfo
  */
+
 public class LoginUserInfo {
 
     private String username;
@@ -16,16 +17,22 @@ public class LoginUserInfo {
     private String email;
     private String phone;
     private String verifyKey;
+    private String role;
+    private boolean enabled;
+    private boolean remember;
     private Date signUpDate;
     private Date lastLoginTime;
 
     public LoginUserInfo() {
     }
 
-    public LoginUserInfo(String username, String email, String verifyKey) {
+    public LoginUserInfo(String username, String password, String email, String phone, String role, boolean enabled) {
         this.username = username;
+        this.password = password;
         this.email = email;
-        this.verifyKey = verifyKey;
+        this.phone = phone;
+        this.role = role;
+        this.enabled = enabled;
     }
 
     public String getUsername() {
@@ -46,6 +53,14 @@ public class LoginUserInfo {
 
     public String getVerifyKey() {
         return this.verifyKey;
+    }
+
+    public String getRole() {
+        return this.role;
+    }
+
+    public boolean isEnabled() {
+        return this.enabled;
     }
 
     public Date getSignUpDate() {
@@ -76,6 +91,14 @@ public class LoginUserInfo {
         this.verifyKey = verifyKey;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setEnabled(String enabled) {
+        this.enabled = enabled == "N" ? false : true;
+    }
+
     public void setSignUpDate(Date signUpDate) {
         this.signUpDate = signUpDate;
     }
@@ -84,10 +107,28 @@ public class LoginUserInfo {
         this.lastLoginTime = lastLoginTime;
     }
 
-    @Override
-    public String toString() {
-        return "LoginUserInfo(username=" + this.getUsername() + ", password=" + this.getPassword() == null ? "null" : "******" + ", phone=" + this.getPhone() + ", verifyKey=" + this.getVerifyKey() + ", signUpDate=" + this.getSignUpDate() + ", lastLoginTime=" + this.getLastLoginTime() + ")";
+    public boolean isRemember() {
+        return remember;
     }
 
+    public void setRemember(boolean remember) {
+        this.remember = remember;
+    }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("LoginUserInfo{");
+        sb.append("username='").append(username).append('\'');
+        sb.append(", password='").append(password == null ? "null" : "******").append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", phone='").append(phone).append('\'');
+        sb.append(", verifyKey='").append(verifyKey).append('\'');
+        sb.append(", role='").append(role).append('\'');
+        sb.append(", enabled=").append(enabled);
+        sb.append(", remember=").append(remember);
+        sb.append(", signUpDate=").append(signUpDate);
+        sb.append(", lastLoginTime=").append(lastLoginTime);
+        sb.append('}');
+        return sb.toString();
+    }
 }

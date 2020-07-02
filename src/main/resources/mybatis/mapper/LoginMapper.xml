@@ -10,13 +10,27 @@
         <parameter property="username" jdbcType="VARCHAR" mode="IN"/>
         <parameter property="email" jdbcType="VARCHAR" mode="IN"/>
         <parameter property="password" jdbcType="VARCHAR" mode="OUT"/>
+        <parameter property="role" jdbcType="VARCHAR" mode="OUT"/>
     </parameterMap>
-    <select id="verifyLogin" parameterMap="verifyResult" statementType="CALLABLE" resultType="String">
+    <select id="verifyLogin2" parameterMap="verifyResult" statementType="CALLABLE" resultType="String">
             {
                 call USER_INFO_MANAGER_PKG.PRO_VERIFY_USER_LOGIN(
                     #{username,mode=IN,jdbcType=VARCHAR,javaType=String},
                     #{email,mode=IN,jdbcType=VARCHAR,javaType=String},
-                    #{password,mode=OUT,jdbcType=VARCHAR,javaType=String}
+                    #{password,mode=OUT,jdbcType=VARCHAR,javaType=String},
+                    #{role,mode=OUT,jdbcType=VARCHAR,javaType=String},
+                    #{enabled,mode=OUT,jdbcType=VARCHAR,javaType=String}
+                )
+            }
+    </select>
+    <select id="verifyLogin" parameterType="loginUserInfo" statementType="CALLABLE" resultType="LoginUserInfo">
+            {
+                call USER_INFO_MANAGER_PKG.PRO_VERIFY_USER_LOGIN(
+                    #{username,mode=IN,jdbcType=VARCHAR,javaType=String},
+                    #{email,mode=IN,jdbcType=VARCHAR,javaType=String},
+                    #{password,mode=OUT,jdbcType=VARCHAR,javaType=String},
+                    #{role,mode=OUT,jdbcType=VARCHAR,javaType=String},
+                    #{enabled,mode=OUT,jdbcType=VARCHAR,javaType=String}
                 )
             }
     </select>
