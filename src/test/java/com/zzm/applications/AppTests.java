@@ -26,31 +26,33 @@ class AppTests {
 
     private static final Logger logger = LoggerFactory.getLogger(AppTests.class);
 
-
+/*
     @Autowired
     ApplicationContext ctx;
 
     @Autowired
     DataSource dataSource;
 
-//    @Autowired(required = false)
-//    private CustomersMapper customersMapper;
-//
-//    @Autowired
-//    private RedisTemplate<String, Object> redisTemplate;  //操K/V都是字符串
-//
-//    @Autowired
-//    private StringRedisTemplate stringRedis; //操作K/V都是对象
-//
-//
-//    @Test
-//    public void testAppService() {
-//        boolean exists = ctx.containsBean("appService");
-//        logger.info("appService exist? " + exists);
-//    }
 
-//
+    @Autowired(required = false)
+    private CustomersMapper customersMapper;
+
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;  //操K/V都是字符串
+
+    @Autowired
+    private StringRedisTemplate stringRedis; //操作K/V都是对象
+
+
     @Test
+    public void testAppService() {
+        boolean exists = ctx.containsBean("appService");
+        logger.info("appService exist? " + exists);
+    }
+
+*/
+
+/*    @Test
     void contextLoads() throws SQLException {
 //        logger.info(person.toString());
         logger.info(String.valueOf(dataSource.getClass()));
@@ -58,7 +60,7 @@ class AppTests {
         connection = dataSource.getConnection();
         logger.info(String.valueOf(connection));
         connection.close();
-    }
+    }*/
 
     /**
      * Redis 测试
@@ -69,80 +71,82 @@ class AppTests {
      * stringRedis.opsForSet();
      * stringRedis.opsForZSet();
      */
-//    @Test
-//    public void testRedis() {
-//        String msgString = null;
-//        //给 redis 添加 数据
-//        //stringRedis.opsForValue().append("msg","hello,World!");
-////       msgString = stringRedis.opsForValue().get("msg");
-//        stringRedis.opsForList().leftPush("list", "10");
-//        stringRedis.opsForList().leftPush("list", "11");
-//        stringRedis.opsForList().leftPush("list", "12");
-//
-//
-//        stringRedis.opsForSet();
-//        stringRedis.opsForZSet();
-//        logger.info(msgString);
-//    }
-//
-//    @Test
-//    public void testRedisWithObject() {
+/*
+    @Test
+    public void testRedis() {
+        String msgString = null;
+        //给 redis 添加 数据
+        //stringRedis.opsForValue().append("msg","hello,World!");
+//       msgString = stringRedis.opsForValue().get("msg");
+        stringRedis.opsForList().leftPush("list", "10");
+        stringRedis.opsForList().leftPush("list", "11");
+        stringRedis.opsForList().leftPush("list", "12");
+
+
+        stringRedis.opsForSet();
+        stringRedis.opsForZSet();
+        logger.info(msgString);
+    }
+
+    @Test
+    public void testRedisWithObject() {
+        Customers customer = customersMapper.getCustomerById(2);
+        //默认如果保存对象，使用jdk的序列化机制，序列化后数据保存到redis中
+//        redisTemplate.opsForValue().set("customer-01",customer);//类需要序列化
+        Object object = redisTemplate.opsForValue().get("customer-01");
+//        logger.info(object.toString());
+        //1。 将数据以json的形式保存到redis中
+        //配置了序列化类之后，改变默认的序列化规则
+        redisTemplate.opsForValue().set("customerJson", customer);
+
+    }
+*/
+
+/*
+    @Autowired
+    private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsMessagingTemplate jmsMessagingTemplate;
+
+    @Autowired
+    private Queue sendQueue;
+
+    @Autowired
+    private Queue receiveQueue;
+
+
+    @Test
+    public void testSendAndReceive() {
+        String msg = ", test message! ";
 //        Customers customer = customersMapper.getCustomerById(2);
-//        //默认如果保存对象，使用jdk的序列化机制，序列化后数据保存到redis中
-////        redisTemplate.opsForValue().set("customer-01",customer);//类需要序列化
-//        Object object = redisTemplate.opsForValue().get("customer-01");
-////        logger.info(object.toString());
-//        //1。 将数据以json的形式保存到redis中
-//        //配置了序列化类之后，改变默认的序列化规则
-//        redisTemplate.opsForValue().set("customerJson", customer);
-//
-//    }
-//
-//
-//    @Autowired
-//    private JmsTemplate jmsTemplate;
-//    @Autowired
-//    private JmsMessagingTemplate jmsMessagingTemplate;
-//
-//    @Autowired
-//    private Queue sendQueue;
-//
-//    @Autowired
-//    private Queue receiveQueue;
-//
-//
-//    @Test
-//    public void testSendAndReceive() {
-//        String msg = ", test message! ";
-////        Customers customer = customersMapper.getCustomerById(2);
-//        Customers customer = null;
-////        logger.info("Message= " + customer);
-//        int counter = 0;
-//        String received = null;
-//        while (counter < 5) {
-//            customer = customersMapper.getCustomerById(counter + 1);
-//            jmsTemplate.convertAndSend(receiveQueue, customer);
-////            jmsMessagingTemplate.convertAndSend(sendQueue, customer);
-////            logger.info(customer.toString());
-//            counter++;
+        Customers customer = null;
+//        logger.info("Message= " + customer);
+        int counter = 0;
+        String received = null;
+        while (counter < 5) {
+            customer = customersMapper.getCustomerById(counter + 1);
+            jmsTemplate.convertAndSend(receiveQueue, customer);
+//            jmsMessagingTemplate.convertAndSend(sendQueue, customer);
+//            logger.info(customer.toString());
+            counter++;
+        }
+        logger.info("Message counter= " + counter);
+//        while (true) {
+//            Object o = jmsTemplate.receiveAndConvert(sendQueue);
+//            logger.info(o.getClass().getName());
+//            if (o == null) {
+//                break;
+//            }
+//            if (o instanceof byte[]) {
+//                received = new String((byte[]) o);
+//            } else if (o instanceof String) {
+//                received = o.toString();
+//            }
+//            logger.info(String.valueOf(received));
 //        }
-//        logger.info("Message counter= " + counter);
-////        while (true) {
-////            Object o = jmsTemplate.receiveAndConvert(sendQueue);
-////            logger.info(o.getClass().getName());
-////            if (o == null) {
-////                break;
-////            }
-////            if (o instanceof byte[]) {
-////                received = new String((byte[]) o);
-////            } else if (o instanceof String) {
-////                received = o.toString();
-////            }
-////            logger.info(String.valueOf(received));
-////        }
 
 
-//    }
+    }*/
 
 
 }
