@@ -22,9 +22,12 @@ public class LoginService {
     @Autowired
     private LoginMapper loginMapper;
 
-    public String verifyLoginInfo(Map<String,String> paramsMap) {
-        loginMapper.verifyLogin(paramsMap);
-        return paramsMap.get("password");
+    public Map<String, String> verifyLoginInfo2(Map<String,String> paramsMap) {
+//        return paramsMap.get("password");
+        return loginMapper.verifyLogin2(paramsMap);
+    }
+    public LoginUserInfo verifyLoginInfo(LoginUserInfo loginUserInfo) {
+        return loginMapper.verifyLogin(loginUserInfo);
     }
 
 }

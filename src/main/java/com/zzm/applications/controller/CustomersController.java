@@ -2,17 +2,15 @@ package com.zzm.applications.controller;
 
 import com.zzm.applications.beans.CityDistricts;
 import com.zzm.applications.beans.Customers;
-import com.zzm.applications.service.CustomersServive;
 import com.zzm.applications.service.CityDistrictsService;
+import com.zzm.applications.service.CustomersServive;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.List;
 
 
@@ -24,7 +22,8 @@ import java.util.List;
  * @Info CustomersController
  */
 @RestController
-@CrossOrigin
+
+@CrossOrigin(origins = {"http://localhost:8088"}, allowCredentials = "true", allowedHeaders = {"X-Custom-Header"}, maxAge = 3600L, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.HEAD})
 public class CustomersController {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomersController.class);

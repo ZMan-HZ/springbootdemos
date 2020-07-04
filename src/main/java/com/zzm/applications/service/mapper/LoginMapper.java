@@ -14,6 +14,7 @@ import java.util.Map;
 
 public interface LoginMapper {
 
-    public void verifyLogin(Map<String,String> paramsMap);
+    public LoginUserInfo verifyLogin(LoginUserInfo paramsMap);
 
+    public Map<String, String> verifyLogin2(Map<String, String> paramsMap);
 }

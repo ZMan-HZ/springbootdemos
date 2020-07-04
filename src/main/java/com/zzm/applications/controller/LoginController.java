@@ -30,9 +30,9 @@ public class LoginController {
         Map<String, String> params = new HashMap<>();
         params.put("username",username);
         params.put("email",null);
-        String pwd = loginService.verifyLoginInfo(params);
+        Map<String, String> resultMap = loginService.verifyLoginInfo2(params);
         String result = null;
-        if (password.equals(pwd)) {
+        if (password.equals(resultMap.get("password"))) {
             result = "success";
         }
         result = "failed";

@@ -1,8 +1,8 @@
 package com.zzm.applications.component;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
-import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +22,7 @@ public class WebLocaleResolver implements LocaleResolver {
     public Locale resolveLocale(HttpServletRequest request) {
         String language = request.getParameter("lan");
         Locale locale = Locale.getDefault();
-        if (!StringUtils.isEmptyOrWhitespace(language)) {
+        if (!StringUtils.isEmpty(language)) {
             String[] lans = language.split("_");
             locale = new Locale(lans[0], lans[1]);
         }
