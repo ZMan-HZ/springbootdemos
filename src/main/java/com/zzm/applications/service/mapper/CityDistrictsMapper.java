@@ -8,7 +8,7 @@ package com.zzm.applications.service.mapper;
  * @Info CityDistrictsMapper
  */
 
-import com.zzm.applications.beans.CityDistricts;
+import com.zzm.applications.mvc.beans.CityDistricts;
 
 import java.util.List;
 

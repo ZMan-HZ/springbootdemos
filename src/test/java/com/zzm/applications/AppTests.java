@@ -1,24 +1,10 @@
 package com.zzm.applications;
 
-import com.zzm.applications.beans.Customers;
-import com.zzm.applications.service.mapper.CustomersMapper;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.jms.core.JmsMessagingTemplate;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.jms.Queue;
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -8,7 +8,7 @@ package com.zzm.applications.service;
  * @Info CustomersServive
  */
 
-import com.zzm.applications.beans.Customers;
+import com.zzm.applications.mvc.beans.Customers;
 import com.zzm.applications.service.mapper.CustomersMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,6 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**

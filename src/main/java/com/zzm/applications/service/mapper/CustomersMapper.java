@@ -9,10 +9,8 @@ package com.zzm.applications.service.mapper;
  */
 
 
-import com.zzm.applications.beans.Customers;
-import org.apache.ibatis.annotations.Mapper;
+import com.zzm.applications.mvc.beans.Customers;
 
-import java.util.Currency;
 import java.util.List;
 
 //@Mapper //此处已被com.zzm.applications.config.CustomizedMyBatisConfiguration 的 mapper scan代替

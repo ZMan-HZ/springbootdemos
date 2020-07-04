@@ -9,7 +9,7 @@ package com.zzm.applications.service.mapper;
  */
 
 
-import com.zzm.applications.beans.Customers;
+import com.zzm.applications.mvc.beans.Customers;
 
 //@Mapper //此处已被com.zzm.applications.config.CustomizedMyBatisConfiguration 的 mapper scan代替
 public interface JmsConfigMapper {

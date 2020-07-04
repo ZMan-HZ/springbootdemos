@@ -21,8 +21,8 @@ import java.util.Map;
  * @Since 2020-07-02 周四 11:16
  * @Info LoginFilter
  */
+/*
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
-
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -75,4 +75,4 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         return false;
     }
-}
+}*/

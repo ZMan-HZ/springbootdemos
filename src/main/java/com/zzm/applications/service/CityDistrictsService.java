@@ -8,7 +8,7 @@ package com.zzm.applications.service;
  * @Info DepartmentService
  */
 
-import com.zzm.applications.beans.CityDistricts;
+import com.zzm.applications.mvc.beans.CityDistricts;
 import com.zzm.applications.service.mapper.CityDistrictsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
