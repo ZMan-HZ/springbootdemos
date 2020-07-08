@@ -12,9 +12,9 @@
 ## 9. Spring Boot intergrate with React.js UI (Copyright constraint, this is a private repository!)
 
 ## UI Overview
-![img](./ui-overview/1.jpg)
-![img](./ui-overview/2.jpg)
-![img](./ui-overview/3.jpg)
+![img](./overview/1.jpg)
+![img](./overview/2.jpg)
+![img](./overview/3.jpg)
 
 
 
