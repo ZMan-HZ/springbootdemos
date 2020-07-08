@@ -13,8 +13,8 @@
 
 ## UI Overview
 ![avatar](./ui-overview/1.png)
-![avatar](./ui-overview/1.png)
-![avatar](./ui-overview/1.png)
+![avatar](./ui-overview/2.png)
+![avatar](./ui-overview/3.png)
 
 
 
