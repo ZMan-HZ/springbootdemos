@@ -11,16 +11,17 @@
 ## 8. Spring Boot intergrate with JMS(ActiveMQ)
 ## 9. Spring Boot intergrate with React.js UI
 
+# TO be contained:
+## 10. Dubbo
+## 10. Zookeeper
+## 11. email
+## 12. Quartz
+## 13. Elasticsearch
+## 14. ...
+## >>>>>>>>
 ## UI Overview
 ![img](./overview/1.jpg)
+
 ![img](./overview/2.jpg)
+
 ![img](./overview/3.jpg)
-
-
-
-# TO be contained:
-## 10. email
-## 10. Quartz
-## 10. Elasticsearch
-## 11. ...
-## >>>>>>>>
