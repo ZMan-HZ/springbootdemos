@@ -2,7 +2,7 @@
 <configuration scan="true" scanPeriod="30 seconds" packagingData="true">
     <property name="LOG_PATH" value="logs"/>
     <property name="LOG_ARCHIVE" value="${LOG_PATH}/archive"/>
-    <property name="LOG_PATTERN" value="%highlight([%level]) -> %highlight(%5d{yyyy-MM-dd HH:mm:ss.SSS}) %green(%c) - %red([%thread]): %cyan(%msg) %n"/>
+    <property name="LOG_PATTERN" value="%highlight([%level]) -> %highlight(%5d{yyyy-MM-dd HH:mm:ss.SSS}) %green(%logger{36})[%line] - %red([%thread]): %cyan(%msg) %n"/>
     <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
